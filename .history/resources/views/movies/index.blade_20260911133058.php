@@ -35,7 +35,7 @@
                 </tr>
             @empty
                 <tr>
-                    <td colspan="5">There are no movies available yet.</td>
+                    <td colspan="5">No movies found yet. Add one to get started.</td>
                 </tr>
             @endforelse
         </tbody>

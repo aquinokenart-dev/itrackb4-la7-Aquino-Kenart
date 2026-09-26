@@ -5,32 +5,24 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 
-class MoviesController extends Controller
+class MovieController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index(Request $request) 
     {
-        $genre = $request->query('genre', 'all');
-        $year  = $request->query('year', 'all');
+        $genre = $request ->query ('genre', 'all');
+        $year = $request ->query ('year', 'all');
 
-        $movies = $this->movies();
+        $query = Movies:query();
 
-        if ($genre !== 'all') {
-            $movies = array_filter($movies, fn($m) => $m['genre'] === $genre);
+        if ($genre !== 'all'){
+            $query->where('genre', 'genre');
         }
-
-        if ($year !== 'all') {
-            $movies = array_filter($movies, fn($m) => $m['year'] == $year);
+        if ($year !== 'all'){
+            $query->where('year', 'yeary');
         }
-
-        return view('movies.index', [
-            'movies' => $movies,
-            'genre'  => $genre,
-            'year'   => $year,
-        ]);
-        
     }
 
     /**
@@ -54,12 +46,10 @@ class MoviesController extends Controller
      */
     public function show($id)
     {
-       $movies = $this->movies();
-
+        $movies = $this->movies();
         if (!isset($movies[$id])) {
             abort(404);
         }
-
         return view('movies.show', ['movie' => $movies[$id]]);
     }
 

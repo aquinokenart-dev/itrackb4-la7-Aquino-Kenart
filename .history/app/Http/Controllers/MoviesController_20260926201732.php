@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 
-class MoviesController extends Controller
+class MovieController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,7 +22,7 @@ class MoviesController extends Controller
         }
 
         if ($year !== 'all') {
-            $movies = array_filter($movies, fn($m) => $m['year'] == $year);
+            $movies = array_filter($movies, fn($m) => (string) $m['year'] === (string) $year);
         }
 
         return view('movies.index', [
@@ -54,13 +54,11 @@ class MoviesController extends Controller
      */
     public function show($id)
     {
-       $movies = $this->movies();
-
-        if (!isset($movies[$id])) {
-            abort(404);
-        }
-
-        return view('movies.show', ['movie' => $movies[$id]]);
+       // $movies = $this->movies();
+       // if (!isset($movies[$id])) {
+           // abort(404);
+        //}
+        //return view('movies.show', ['movie' => $movies[$id]]);
     }
 
     /**

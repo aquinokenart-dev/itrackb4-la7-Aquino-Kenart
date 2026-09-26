@@ -5,30 +5,33 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 
-class MoviesController extends Controller
+class MovieController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index(Request $request) 
     {
-        $genre = $request->query('genre', 'all');
-        $year  = $request->query('year', 'all');
+        $genre = $request ->query ('genre', 'all');
+        $year = $request ->query ('year', 'all');
 
         $movies = $this->movies();
 
         if ($genre !== 'all') {
-            $movies = array_filter($movies, fn($m) => $m['genre'] === $genre);
+            $movies = array_filter($movies, function ($movie) use ($genre) {
+                
+            });
         }
 
         if ($year !== 'all') {
-            $movies = array_filter($movies, fn($m) => $m['year'] == $year);
+            $movies = array_filter($movies, function ($movie) use ($year) {
+                
+            });
         }
-
         return view('movies.index', [
             'movies' => $movies,
-            'genre'  => $genre,
-            'year'   => $year,
+            'genre' => $genre,
+            'year' => $year,
         ]);
         
     }
@@ -54,13 +57,11 @@ class MoviesController extends Controller
      */
     public function show($id)
     {
-       $movies = $this->movies();
-
-        if (!isset($movies[$id])) {
-            abort(404);
-        }
-
-        return view('movies.show', ['movie' => $movies[$id]]);
+       // $movies = $this->movies();
+       // if (!isset($movies[$id])) {
+           // abort(404);
+        //}
+        //return view('movies.show', ['movie' => $movies[$id]]);
     }
 
     /**

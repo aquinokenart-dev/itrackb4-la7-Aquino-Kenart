@@ -1,5 +1,5 @@
 <nav class="nav mb-3">
-    <a class="nav-link {{ request()->is('movies*') ? 'fw-bold text-primary' : '' }}"
+    <a class="nav-link {{ request()->is('movies*') ? 'active fw-bold text-primary' : '' }}"
        href="{{ route('movies.index') }}">Movie List</a>
     <a class="nav-link" href="{{ route('movies.show', 1) }}">Sample Movie</a>
 </nav>

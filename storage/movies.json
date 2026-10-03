@@ -1,0 +1,65 @@
+{
+    "1": {
+        "id": 1,
+        "title": "Spider-Man",
+        "genre": "Action",
+        "rating": 9.1,
+        "year": 2002
+    },
+    "2": {
+        "id": 2,
+        "title": "Gagamboy",
+        "genre": "Comedy",
+        "rating": 8.5,
+        "year": 2004
+    },
+    "3": {
+        "id": 3,
+        "title": "Harry Potter",
+        "genre": "Fantasy",
+        "rating": 9.7,
+        "year": 2001
+    },
+    "4": {
+        "id": 4,
+        "title": "Grown Ups",
+        "genre": "Comedy",
+        "rating": 8.6,
+        "year": 2010
+    },
+    "5": {
+        "id": 5,
+        "title": "Grown Ups 2",
+        "genre": "Comedy",
+        "rating": 8.9,
+        "year": 2013
+    },
+    "6": {
+        "id": 6,
+        "title": "Avengers: Endgame",
+        "genre": "Action",
+        "rating": 9.8,
+        "year": 2019
+    },
+    "7": {
+        "id": 7,
+        "title": "Hay",
+        "genre": "Comedy",
+        "rating": 9.2,
+        "year": 2002
+    },
+    "8": {
+        "id": 8,
+        "title": "Bag",
+        "genre": "Action",
+        "rating": 6.7,
+        "year": 2013
+    },
+    "9": {
+        "id": 9,
+        "title": "Baywatch",
+        "genre": "Comedy",
+        "rating": 9.2,
+        "year": 2003
+    }
+}

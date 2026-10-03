@@ -5,10 +5,6 @@
 @section('content')
     <h2>All Movies</h2>
 
-        <div class="mb-3">
-    <a href="{{ route('movies.create') }}" class="btn btn-success">Add New Movie</a>
-    </div>
-
     <p>
         Active filters:
         @if ($genre === 'all' && $year === 'all')
@@ -23,6 +19,10 @@
         @endif
     </p>
 
+
+    <div class="mb-3">
+    <a href="{{ route('movies.create') }}" class="btn btn-success">Add New Movie</a>
+    </div>
 
     <div class="mb-2">
         <strong>Genre:</strong>

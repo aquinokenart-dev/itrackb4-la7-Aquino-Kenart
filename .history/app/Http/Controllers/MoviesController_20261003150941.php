@@ -38,16 +38,17 @@ class MoviesController extends Controller
      */
     public function create()
     {
-        return view('movies.create');
+        return view ('movies.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
+{
     $validated = $request->validate([
         'title'  => 'required|string|max:100',
+        'price'  => 'required|numeric|min:1',
         'genre'  => 'required|in:Action,Comedy,Fantasy',
         'rating' => 'required|numeric|min:0|max:10',
         'year'   => 'required|integer|min:1900|max:2030',
@@ -60,6 +61,7 @@ class MoviesController extends Controller
     $movies[$nextId] = [
         'id'     => $nextId,
         'title'  => $validated['title'],
+        'price'  => (int) $validated['price'],
         'genre'  => $validated['genre'],
         'rating' => (float) $validated['rating'],
         'year'   => (int) $validated['year'],
@@ -70,7 +72,7 @@ class MoviesController extends Controller
     return redirect()
         ->route('movies.index')
         ->with('success', 'Movie added successfully!');
-    }
+}
 
     /**
      * Display the specified resource.
@@ -125,16 +127,19 @@ class MoviesController extends Controller
         return view('movies.filter', ['movies' => $movies, 'activeGenre' => $genre]);
     }
 
+    /**
+     * Movie data helper.
+     */
     private function movies()
     {
-        $path = storage_path('movies.json');
+        $path = storage_path('app/movies.json');
 
         return json_decode(file_get_contents($path), true);
     }
 
     private function saveMovies(array $movies){
         file_put_contents(
-            storage_path('movies.json'),
+            storage_path('app/movies.json'),
             json_encode($movies, JSON_PRETTY_PRINT)
         );
     }

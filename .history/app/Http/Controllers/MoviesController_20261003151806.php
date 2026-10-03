@@ -38,7 +38,7 @@ class MoviesController extends Controller
      */
     public function create()
     {
-        return view('movies.create');
+        return view ('movies.create');
     }
 
     /**
@@ -125,16 +125,19 @@ class MoviesController extends Controller
         return view('movies.filter', ['movies' => $movies, 'activeGenre' => $genre]);
     }
 
+    /**
+     * Movie data helper.
+     */
     private function movies()
     {
-        $path = storage_path('movies.json');
+        $path = storage_path('app/movies.json');
 
         return json_decode(file_get_contents($path), true);
     }
 
     private function saveMovies(array $movies){
         file_put_contents(
-            storage_path('movies.json'),
+            storage_path('app/movies.json'),
             json_encode($movies, JSON_PRETTY_PRINT)
         );
     }

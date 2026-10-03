@@ -17,9 +17,11 @@ class MoviesController extends Controller
 
         $movies = $this->movies();
 
-        if ($genre !== 'all') {
-            $movies = array_filter($movies, fn($m) => $m['genre'] === $genre);
-        }
+        if (!empty($genres)) {
+        $movies = array_filter($movies, function ($m) use ($genres) {
+            return in_array($m['genre'], $genres);
+        });
+    }
 
         if ($year !== 'all') {
             $movies = array_filter($movies, fn($m) => $m['year'] == $year);
@@ -125,6 +127,9 @@ class MoviesController extends Controller
         return view('movies.filter', ['movies' => $movies, 'activeGenre' => $genre]);
     }
 
+    /**
+     * Movie data helper.
+     */
     private function movies()
     {
         $path = storage_path('movies.json');

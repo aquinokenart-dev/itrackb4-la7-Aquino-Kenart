@@ -125,6 +125,9 @@ class MoviesController extends Controller
         return view('movies.filter', ['movies' => $movies, 'activeGenre' => $genre]);
     }
 
+    /**
+     * Movie data helper.
+     */
     private function movies()
     {
         $path = storage_path('movies.json');
@@ -134,7 +137,7 @@ class MoviesController extends Controller
 
     private function saveMovies(array $movies){
         file_put_contents(
-            storage_path('movies.json'),
+            storage_path('app/movies.json'),
             json_encode($movies, JSON_PRETTY_PRINT)
         );
     }
